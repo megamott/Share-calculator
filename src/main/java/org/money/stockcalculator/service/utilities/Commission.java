@@ -1,4 +1,4 @@
-package org.money.stockcalculator.service;
+package org.money.stockcalculator.service.utilities;
 
 import org.springframework.stereotype.Service;
 

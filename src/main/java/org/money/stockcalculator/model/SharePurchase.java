@@ -23,7 +23,7 @@ public class SharePurchase {
     public Long id;
 
     /**
-     * Тикер акции (MSFT, APPL)
+     * Тикер акции (MSFT, AAPL)
      */
     public String ticker;
 

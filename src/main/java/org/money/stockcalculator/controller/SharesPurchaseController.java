@@ -2,7 +2,7 @@ package org.money.stockcalculator.controller;
 
 import org.money.stockcalculator.dao.SharePurchaseRepo;
 import org.money.stockcalculator.model.SharePurchase;
-import org.money.stockcalculator.service.Commission;
+import org.money.stockcalculator.service.utilities.Commission;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
