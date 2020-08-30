@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author Matvey Konoplyov
  */
-
 @Controller
 public class DollarPurchaseController {
 

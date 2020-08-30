@@ -9,25 +9,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Данной моделью является любая покупка доллара за рубль у Tinkoff брокера
+ * Данной моделью является любая покупка акции у Tinkoff брокера
  *
  * @author Matvey Konoplyov
  */
 @Entity
 @Data
 @NoArgsConstructor
-public class DollarPurchase {
+public class SharePurchase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
+    /**
+     * Тикер акции (MSFT, APPL)
+     */
+    public String ticker;
+
     public int quantity;
 
     /**
-     * Цена покупки одного доллара в рублях
+     * Цена покупки одной акции в рублях на момент покупки
      * Общая сумма покупки не описывается, вместо этого в класс добавлено поле
-     * с количеством купленных долларов
+     * с количеством купленных акций
      * @see #quantity
      */
     public double price;
@@ -41,12 +46,14 @@ public class DollarPurchase {
     public double commission;
 
     /**
-     * Создание нового объекта покупки доллара за рубль
-     * @param quantity количество купленных долларов
-     * @param price цена одного доллара на момент покупки
+     * Создание нового объекта покупки акции
+     * @param ticker тикер акции
+     * @param quantity количество купленных акций
+     * @param price цена за одну акцию на момент попкупки
      * @param commission комиссия сделки
      */
-    public DollarPurchase(int quantity, double price, double commission) {
+    public SharePurchase(String ticker, int quantity, double price, double commission) {
+        this.ticker = ticker;
         this.quantity = quantity;
         this.price = price;
         this.commission = commission;

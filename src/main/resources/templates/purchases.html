@@ -29,6 +29,34 @@
     <input type="text" name="price" placeholder="price">
     <button type="submit">Add</button>
 </form>
+<h3>Shares Purchases</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Number</th>
+        <th>Ticker</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Commission</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="share, state:${sharePurchases}" >
+        <td th:text="${share.id}"></td>
+        <td th:text="${share.ticker}"></td>
+        <td th:text="${share.quantity}"></td>
+        <td th:text="${share.price}"></td>
+        <td th:text="${share.commission}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<form method="post" th:action="@{/add-share-purchase}">
+    <input type="text" name="ticker" placeholder="ticker">
+    <input type="text" name="quantity" placeholder="quantity">
+    <input type="text" name="price" placeholder="price">
+    <button type="submit">Add</button>
+</form>
 
 </body>
 </html>
