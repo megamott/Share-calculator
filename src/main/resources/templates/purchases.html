@@ -31,6 +31,9 @@
     <input type="text" name="price" placeholder="price">
     <button type="submit">Add</button>
 </form>
+<p th:text="'Commission: ' + ${currencyCommissionAdder} + ' Р'"></p>
+<p th:text="'Difference: ' + ${currencyAdder} + ' Р'"></p>
+<br>
 <h3>Shares Purchases</h3>
 <table>
     <thead>
@@ -44,7 +47,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="share, state:${sharePurchases}" >
+    <tr th:each="share, state:${sharePurchases}">
         <td th:text="${share.id}"></td>
         <td th:text="${share.ticker}"></td>
         <td th:text="${share.quantity}"></td>
@@ -61,6 +64,8 @@
     <input type="text" name="price" placeholder="price">
     <button type="submit">Add</button>
 </form>
-
+<p th:text="'Commission: ' + ${shareCommissionAdder} + ' $'"></p>
+<p th:text="'Difference: ' + ${shareAdder} + ' $'"></p>
+<br>
 </body>
 </html>
