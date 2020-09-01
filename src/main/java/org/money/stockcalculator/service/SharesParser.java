@@ -3,7 +3,7 @@ package org.money.stockcalculator.service;
 import java.util.Map;
 
 /**
- * Парсер акций
+ * Парсер катировок акций
  *
  * @author Matvey Konoplyov
  */
