@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.money.stockcalculator.service.CurrencyParser;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,6 +16,7 @@ import java.net.URL;
  *
  * @author Matvey Konoplyov
  */
+@Service
 public class UsdRubParser implements CurrencyParser {
 
     /**

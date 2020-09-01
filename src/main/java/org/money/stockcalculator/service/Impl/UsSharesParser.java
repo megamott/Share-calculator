@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
  * @author Matvey Konoplyov
  */
 @Service
-public class USSharesParser implements SharesParser {
+public class UsSharesParser implements SharesParser {
 
     /**
      * Получение html кода страницы по ссылке

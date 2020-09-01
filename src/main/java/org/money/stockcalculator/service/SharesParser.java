@@ -1,5 +1,7 @@
 package org.money.stockcalculator.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Map;
 
 /**
@@ -7,6 +9,7 @@ import java.util.Map;
  *
  * @author Matvey Konoplyov
  */
+@Service
 public interface SharesParser {
     /**
      * @return словарь из тикеров акций и соответствующих им катировок

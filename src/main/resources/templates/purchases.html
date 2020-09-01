@@ -13,14 +13,16 @@
         <th>Quantity</th>
         <th>Price</th>
         <th>Commission</th>
+        <th>Difference</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="dp:${dollarPurchases}">
+    <tr th:each="dp, state:${dollarPurchases}">
         <td th:text="${dp.id}"></td>
         <td th:text="${dp.quantity}"></td>
         <td th:text="${dp.price}"></td>
         <td th:text="${dp.commission}"></td>
+        <td th:text="${currencyDifferences[state.index]}"></td>
     </tr>
     </tbody>
 </table>
@@ -38,6 +40,7 @@
         <th>Quantity</th>
         <th>Price</th>
         <th>Commission</th>
+        <th>Difference</th>
     </tr>
     </thead>
     <tbody>
@@ -47,6 +50,7 @@
         <td th:text="${share.quantity}"></td>
         <td th:text="${share.price}"></td>
         <td th:text="${share.commission}"></td>
+        <td th:text="${shareDifferences[state.index]}"></td>
     </tr>
     </tbody>
 </table>
