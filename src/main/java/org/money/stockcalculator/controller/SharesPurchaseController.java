@@ -4,6 +4,8 @@ import org.money.stockcalculator.dao.SharePurchaseRepo;
 import org.money.stockcalculator.model.SharePurchase;
 import org.money.stockcalculator.service.utilities.Commission;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,6 +36,13 @@ public class SharesPurchaseController {
                                                         commission.getMyCommission(quantity, price));
         sharePurchaseRepo.save(sharePurchase);
 
+        return "redirect:/purchases";
+    }
+
+
+    @GetMapping("/delete-share-purchase/{id}")
+    public String deleteDollarPurchase(@PathVariable("id") Long id){
+        sharePurchaseRepo.deleteById(id);
         return "redirect:/purchases";
     }
 

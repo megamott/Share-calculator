@@ -1,6 +1,6 @@
 CREATE TABLE dollar_purchase
 (
-    id         SERIAL PRIMARY KEY,
+    id         SERIAL PRIMARY KEY AUTO_INCREMENT,
     quantity   INT NOT NULL,
     price      FLOAT NOT NULL,
     commission FLOAT NOT NULL

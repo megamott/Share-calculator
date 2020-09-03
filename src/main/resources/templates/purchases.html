@@ -23,6 +23,7 @@
         <td th:text="${dp.price}"></td>
         <td th:text="${dp.commission}"></td>
         <td th:text="${currencyDifferences[state.index]}"></td>
+        <td><a th:href="@{/delete-dollar-purchase/{id}(id=${dp.id})}">Delete</a></td>
     </tr>
     </tbody>
 </table>
@@ -54,6 +55,7 @@
         <td th:text="${share.price}"></td>
         <td th:text="${share.commission}"></td>
         <td th:text="${shareDifferences[state.index]}"></td>
+        <td><a th:href="@{/delete-share-purchase/{id}(id=${share.id})}">Delete</a></td>
     </tr>
     </tbody>
 </table>

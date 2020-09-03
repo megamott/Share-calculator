@@ -3,10 +3,7 @@ package org.money.stockcalculator.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Данной моделью является любая покупка доллара за рубль у Tinkoff брокера
@@ -16,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "dollar_purchase")
 public class DollarPurchase {
 
     @Id

@@ -4,6 +4,8 @@ import org.money.stockcalculator.dao.DollarPurchaseRepo;
 import org.money.stockcalculator.model.DollarPurchase;
 import org.money.stockcalculator.service.utilities.Commission;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,6 +36,12 @@ public class DollarPurchaseController {
 
         return "redirect:/purchases";
 
+    }
+
+    @GetMapping("/delete-dollar-purchase/{id}")
+    public String deleteDollarPurchase(@PathVariable("id") Long id){
+        dollarPurchaseRepo.deleteById(id);
+        return "redirect:/purchases";
     }
 
 
