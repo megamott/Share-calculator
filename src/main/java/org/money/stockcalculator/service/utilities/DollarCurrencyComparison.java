@@ -20,14 +20,17 @@ public class DollarCurrencyComparison {
 
     private final DollarPurchaseRepo dollarPurchaseRepo;
     private final CurrencyParser currencyParser;
+    private final Commission commission;
 
-    public DollarCurrencyComparison(DollarPurchaseRepo dollarPurchaseRepo, @Qualifier("usdRubParser") CurrencyParser currencyParser) {
+    public DollarCurrencyComparison(DollarPurchaseRepo dollarPurchaseRepo, @Qualifier("usdRubParser") CurrencyParser currencyParser, Commission commission) {
         this.dollarPurchaseRepo = dollarPurchaseRepo;
         this.currencyParser = currencyParser;
+        this.commission = commission;
     }
 
     /**
      * Сравнение цен покупок доллара из базы данных с нынешними катировками
+     * с учётом коммиссии при покупке
      *
      * @return упорядоченный список разниц
      */
@@ -36,7 +39,8 @@ public class DollarCurrencyComparison {
         List<Double> differences = new ArrayList<>();
         for (DollarPurchase dollarPurchase : allCurrencies
         ) {
-            differences.add(roundValue(currencyParser.getQuote() - dollarPurchase.price));
+            double buyingPriceWithCommission = dollarPurchase.price * dollarPurchase.quantity + commission.getMyCommission(dollarPurchase.quantity, dollarPurchase.price);
+            differences.add(roundValue(currencyParser.getQuote() * dollarPurchase.quantity - buyingPriceWithCommission));
         }
 
         return differences;

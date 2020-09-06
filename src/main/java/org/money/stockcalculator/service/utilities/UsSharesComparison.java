@@ -21,10 +21,12 @@ public class UsSharesComparison {
 
     private final SharePurchaseRepo sharePurchaseRepo;
     private final SharesParser sharesParser;
+    private final Commission commission;
 
-    public UsSharesComparison(SharePurchaseRepo sharePurchaseRepo, @Qualifier("usSharesParser") SharesParser sharesParser) {
+    public UsSharesComparison(SharePurchaseRepo sharePurchaseRepo, @Qualifier("usSharesParser") SharesParser sharesParser, Commission commission) {
         this.sharePurchaseRepo = sharePurchaseRepo;
         this.sharesParser = sharesParser;
+        this.commission = commission;
     }
 
     /**
@@ -40,9 +42,9 @@ public class UsSharesComparison {
         } catch (Exception e) {
             System.out.println("Проблема в считывании словаря акций");
         }
-        double purchasePrice = share.price;
+        double purchasePriceWithCommission = share.price * share.quantity + commission.getMyCommission(share.quantity, share.price);
 
-        return currentPrice - purchasePrice;
+        return currentPrice * share.quantity - purchasePriceWithCommission;
     }
 
     /**
