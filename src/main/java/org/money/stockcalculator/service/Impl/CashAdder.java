@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * TODO Переписать весь говнокод
  * Класс, определяющий суммарную доходность портфеля с учётом налогов и коммиссий
  *
  * @author Matvey Konoplyov
@@ -70,19 +71,6 @@ public class CashAdder implements Adder {
     }
 
     /**
-     * Определение цены покупки портфеля с учётом комиссии при покупке
-     */
-    public double getSpending(){
-        List<SharePurchase> allPurchases = (List<SharePurchase>) sharePurchaseRepo.findAll();
-        double fullPrice = 0;
-        for (SharePurchase sharePurchase : allPurchases
-        ) {
-            fullPrice += sharePurchase.price * sharePurchase.quantity * usdRubParser.getQuote() + sharePurchase.commission * usdRubParser.getQuote();
-        }
-        return valueRounder.roundValue(fullPrice);
-    }
-
-    /**
      * Определение цены продажи портфеля без учёта налогов и комиссии
      */
     public double getSharesPrice(){
@@ -118,14 +106,21 @@ public class CashAdder implements Adder {
     }
 
     /**
-     * Подсчёт суммы, на которую была куплена долларовая валюта с учётом коммиссии
+     * Определение цены покупки портфеля с учётом комиссии при покупке доллара и коммиссии при покупке рубля
+     *
+     * Баг (можно исправить): комиссия переводится в рубли по нынешнему курсу
      */
-    private double BuyingCurrencyCashAdder() {
+    public double getSpending(){
         List<DollarPurchase> dollarPurchases = (List<DollarPurchase>) dollarPurchaseRepo.findAll();
+        List<SharePurchase> sharePurchases = (List<SharePurchase>) sharePurchaseRepo.findAll();
         double sum = 0;
         for (DollarPurchase dollarPurchase : dollarPurchases) {
-            sum += dollarPurchase.price - dollarPurchase.commission;
+            sum += dollarPurchase.price * dollarPurchase.quantity + dollarPurchase.commission;
         }
+        for(SharePurchase sharePurchase : sharePurchases){
+            sum += sharePurchase.commission * usdRubParser.getQuote();
+        }
+
         return valueRounder.roundValue(sum);
     }
 

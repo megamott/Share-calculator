@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 /**
+ * TODO Добавить везде вместо классовых методов
  * Округление всех чисел с плавающей точкй до 4 знакоа после запятой
  *
  * @author Matvey Konoplyov

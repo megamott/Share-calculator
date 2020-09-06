@@ -1,5 +1,5 @@
 
-CREATE TABLE share_purchase
+CREATE TABLE share_purchase_test
 (
     id         SERIAL PRIMARY KEY,
     ticker     VARCHAR(255) NOT NULL,
@@ -9,9 +9,9 @@ CREATE TABLE share_purchase
 );
 
 
-CREATE TABLE dollar_purchase
+CREATE TABLE dollar_purchase_test
 (
-    id         SERIAL PRIMARY KEY AUTO_INCREMENT,
+    id         SERIAL PRIMARY KEY,
     quantity   INT NOT NULL,
     price      FLOAT NOT NULL,
     commission FLOAT NOT NULL

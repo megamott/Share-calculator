@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
+ * TODO Добавить Bootstrap
  * Вывод всех операций с акциями
  *
  * @author Matvey Konoplyov
