@@ -25,6 +25,7 @@ public class ShareAdder implements Adder {
         return roundValue(usSharesComparison.getComparisonsList().stream().mapToDouble(a -> a).sum());
     }
 
+
     /**
      * Функция округления числа до 4 знака
      */

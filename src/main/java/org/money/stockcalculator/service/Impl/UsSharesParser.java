@@ -81,6 +81,7 @@ public class UsSharesParser implements SharesParser {
                                  .text()
                                  .replaceAll("\\d+ \\d+:\\d+:\\d+", "")
                                  .replaceAll(" 0 0 ", "")
+                                 .replaceAll( " 0 ", "")
                                  .replaceAll("Phillips 66", "");
 
 
