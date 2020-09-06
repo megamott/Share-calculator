@@ -2,10 +2,7 @@ package org.money.stockcalculator.controller;
 
 import org.money.stockcalculator.dao.DollarPurchaseRepo;
 import org.money.stockcalculator.dao.SharePurchaseRepo;
-import org.money.stockcalculator.service.Impl.CurrencyAdder;
-import org.money.stockcalculator.service.Impl.CurrencyCommissionAdder;
-import org.money.stockcalculator.service.Impl.ShareAdder;
-import org.money.stockcalculator.service.Impl.ShareCommissionAdder;
+import org.money.stockcalculator.service.Impl.*;
 import org.money.stockcalculator.service.utilities.DollarCurrencyComparison;
 import org.money.stockcalculator.service.utilities.UsSharesComparison;
 import org.springframework.stereotype.Controller;
@@ -13,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Контроллер для операций с акциями
+ * Вывод всех операций с акциями
  *
  * @author Matvey Konoplyov
  */
@@ -28,12 +25,13 @@ public class MainPurchaseController {
     private final CurrencyCommissionAdder currencyCommissionAdder;
     private final ShareAdder shareAdder;
     private final ShareCommissionAdder shareCommissionAdder;
+    private final CashAdder cashAdder;
 
 
     public MainPurchaseController(DollarPurchaseRepo dollarPurchaseRepo,
                                   SharePurchaseRepo sharePurchaseRepo,
                                   UsSharesComparison usSharesComparison,
-                                  DollarCurrencyComparison dollarCurrencyComparison, CurrencyAdder currencyAdder, CurrencyCommissionAdder currencyCommissionAdder, ShareAdder shareAdder, ShareCommissionAdder shareCommissionAdder) {
+                                  DollarCurrencyComparison dollarCurrencyComparison, CurrencyAdder currencyAdder, CurrencyCommissionAdder currencyCommissionAdder, ShareAdder shareAdder, ShareCommissionAdder shareCommissionAdder, CashAdder cashAdder) {
         this.dollarPurchaseRepo = dollarPurchaseRepo;
         this.sharePurchaseRepo = sharePurchaseRepo;
         this.usSharesComparison = usSharesComparison;
@@ -42,19 +40,24 @@ public class MainPurchaseController {
         this.currencyCommissionAdder = currencyCommissionAdder;
         this.shareAdder = shareAdder;
         this.shareCommissionAdder = shareCommissionAdder;
+        this.cashAdder = cashAdder;
     }
 
     @GetMapping("/purchases")
     public String getAllPurchases(Model model) {
 
-        model.addAttribute("dollarPurchases", dollarPurchaseRepo.findAll());
-        model.addAttribute("sharePurchases", sharePurchaseRepo.findAll());
-        model.addAttribute("shareDifferences", usSharesComparison.getComparisonsList());
-        model.addAttribute("currencyDifferences", dollarCurrencyComparison.getComparisonsList());
-        model.addAttribute("currencyAdder", currencyAdder.getSum())
+        model.addAttribute("dollarPurchases", dollarPurchaseRepo.findAll())
+             .addAttribute("sharePurchases", sharePurchaseRepo.findAll())
+             .addAttribute("shareDifferences", usSharesComparison.getComparisonsList())
+             .addAttribute("currencyDifferences", dollarCurrencyComparison.getComparisonsList())
+             .addAttribute("currencyAdder", currencyAdder.getSum())
              .addAttribute("currencyCommissionAdder", currencyCommissionAdder.getSum())
              .addAttribute("shareAdder", shareAdder.getSum())
-             .addAttribute("shareCommissionAdder", shareCommissionAdder.getSum());
+             .addAttribute("shareCommissionAdder", shareCommissionAdder.getSum())
+             .addAttribute("spending", cashAdder.getSpending())
+             .addAttribute("bagPrice", cashAdder.getSum())
+             .addAttribute("income", cashAdder.getIncome())
+             .addAttribute("bagPriceWithoutCommission", cashAdder.getSharesPrice());
 
         return "purchases";
     }
