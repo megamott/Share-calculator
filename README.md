@@ -1,5 +1,5 @@
 # Share-calculator <br/>
-This is a simple CRUD application, that calculate income of my portfolio in [Tinkoff invest](https://www.tinkoff.ru/invest/).  
+This is a simple CRUD application, that calculate income of my portfolio in [Tinkoff invest](https://www.tinkoff.ru/invest/).  <br/>
 ![shares](https://user-images.githubusercontent.com/54303323/97119312-62dd6180-1720-11eb-882e-0f8cc257f4b7.png)
 ## Usage
 1. Create *.properties* file in **resources/** folder with following fields:
