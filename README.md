@@ -4,9 +4,9 @@ This is a simple CRUD application, that calculate income of my portfolio in [Tin
 ## Usage
 1. Create *.properties* file in **resources/** folder with following fields:
 ```
-spring.datasource.url=jdbc:postgresql://localhost:5432/~~your database name~~
-spring.datasource.username=~~your login~~
-spring.datasource.password=~~your password~~ 
+spring.datasource.url=jdbc:postgresql://localhost:5432/
+spring.datasource.username=
+spring.datasource.password=
 ```
 2. Run *.sql* file to fill your database with the required fields.
 3. Build the project with Maven:
@@ -20,6 +20,7 @@ $ mvn clean package
 - Maven 3.1+
 - Jsoup 1.13.1 - for parsing
 - Postgersql 42.2.5 - database <br/>
+<br/>
 Use them to avoid build errors.
 ## Why?
 It seemed to me that the Tinkoff application was counting my money incorrectly.
