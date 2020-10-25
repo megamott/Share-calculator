@@ -19,7 +19,7 @@ $ mvn clean package
 - Spring 2.3.3.RELEASE
 - Maven 3.1+
 - Jsoup 1.13.1 - for parsing
-- Postgersql 42.2.5 - database
+- Postgersql 42.2.5 - database <br/>
 Use them to avoid build errors.
 ## Why?
 It seemed to me that the Tinkoff application was counting my money incorrectly.
