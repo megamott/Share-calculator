@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Purchases</title>
-    <link rel="stylesheet" type="text/css" href="/css/table.css" >
+<!--    <link rel="stylesheet" type="text/css" href="/css/table.css" >-->
 </head>
 <body>
 <h3>Dollar Purchases</h3>
-<table class="content-table">
+<table>
     <thead>
     <tr>
         <th>Quantity</th>
@@ -26,6 +26,7 @@
     </tr>
     </tbody>
 </table>
+<div>
 <form method="post" th:action="@{/add-dollar-purchase}">
     <input type="text" name="quantity" placeholder="quantity">
     <input type="text" name="price" placeholder="price">
@@ -33,6 +34,7 @@
 </form>
 <p th:text="'Commission: ' + ${currencyCommissionAdder} + ' Р'"></p>
 <p th:text="'Difference: ' + ${currencyAdder} + ' Р'"></p>
+</div>
 <h3>Shares Purchases</h3>
 <table>
     <thead>

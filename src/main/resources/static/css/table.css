@@ -1,42 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+*{
+    margin:0;
+    padding: 0;
+    outline: 0;
+}
 * {
-    font-family: sans-serif; /* Change your font family */
+    font-family: sans-serif;
 }
 
-.content-table {
+.filter{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background: rgb(233,76,161);
+    background: -moz-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+    background: linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
+    opacity: .7;
+}
+.content-table{
+    position: absolute;
+    z-index: 2;
+    left: 5%;
+    top: 50%;
+    width: 30%;
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64,64,64,.7);
+    border-radius: 12px 12px 0 0;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
 }
 
-.content-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
+.form-block{
+    position: absolute;
+    z-index: 2;
+    left: 5%;
+    top: 55%;
+    width: 30%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64,64,64,.7);
+    overflow: hidden;
 }
 
-.content-table th,
-.content-table td {
-    padding: 12px 15px;
-}
+td , th{
+    padding: 15px 20px;
+    text-align: center;
 
-.content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
 
-.content-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
 }
+th{
+    background-color: #ba68c8;
+    color: #fafafa;
+    font-family: 'Open Sans', Sans-serif, serif;
+    font-weight: 200;
+    text-transform: uppercase;
 
-.content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
 }
-
-.content-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
+tr{
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+    background-color: #eeeeee;
 }

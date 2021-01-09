@@ -25,6 +25,7 @@ public class UsSharesParser implements SharesParser {
 
     /**
      * Получение html кода страницы по ссылке
+     *
      * @return объект Document с html кодом страницы
      */
     private Document getPage(String link) {
@@ -44,16 +45,17 @@ public class UsSharesParser implements SharesParser {
      * Функиия получения списка тикеров акций представленных на рынке из html кода страницы
      * Выборка проводилась при помощи регулярных выражений методом тыка,
      * потому может быть оптимизирована
+     *
      * @return список тикеров
      */
     private List<String> getTickerList() {
         Document page = getPage("https://smart-lab.ru/q/usa/");
 
         String tableQuotes = page.select("table[class=simple-little-table trades-table]")
-                                 .first()
-                                 .select("td")
-                                 .text()
-                                 .replaceAll("\\d+ \\d+:\\d+:\\d+", "");
+                .first()
+                .select("td")
+                .text()
+                .replaceAll("\\d+ \\d+:\\d+:\\d+", "");
 
         List<String> tickerList = getInfoByPattern(tableQuotes,
                 "(([A-Z]{1,}   |[A-Z]{1,}\\.[A-Z]{1,}   )|          )"
@@ -70,19 +72,20 @@ public class UsSharesParser implements SharesParser {
      * Функиия получения массива катировок акций представленных на рынке из html кода страницы
      * Выборка проводилась при помощи регулярных выражений методом тыка,
      * потому может быть оптимизирована
+     *
      * @return массив double из катировок акций
      */
     private double[] getQuoteList() {
         Document page = getPage("https://smart-lab.ru/q/usa/");
 
         String tableQuotes = page.select("table[class=simple-little-table trades-table]")
-                                 .first()
-                                 .select("td")
-                                 .text()
-                                 .replaceAll("\\d+ \\d+:\\d+:\\d+", "")
-                                 .replaceAll(" 0 0 ", "")
-                                 .replaceAll( " 0 ", "")
-                                 .replaceAll("Phillips 66", "");
+                .first()
+                .select("td")
+                .text()
+                .replaceAll("\\d+ \\d+:\\d+:\\d+", "")
+                .replaceAll(" 0 0 ", "")
+                .replaceAll(" 0 ", "")
+                .replaceAll("Phillips 66", "");
 
 
         List<String> list = getInfoByPattern(tableQuotes, "( \\d+[^A-Z]( |.\\d* )|          )");
@@ -96,10 +99,11 @@ public class UsSharesParser implements SharesParser {
 
     /**
      * Преобразование списка в массив double
+     *
      * @param list лист строк (катировок акций)
      * @return массив double из катировок акций
      */
-    private double[] getDoubleArrayFromList(List<String> list){
+    private double[] getDoubleArrayFromList(List<String> list) {
         double[] doubleValues = new double[list.size()];
 
         for (int i = 0; i < list.size(); i++) {
@@ -115,8 +119,9 @@ public class UsSharesParser implements SharesParser {
 
     /**
      * Выборка из строки подстрок удовлетворяющих шаблону
+     *
      * @param parsedString исходная строка для выборки
-     * @param myPattern шаблон
+     * @param myPattern    шаблон
      * @return список подстрок, удовлетворяющих нужному шаблону
      */
     private List<String> getInfoByPattern(String parsedString, String myPattern) {
@@ -134,6 +139,7 @@ public class UsSharesParser implements SharesParser {
     /**
      * Получение словаря из тикеров акций США и соответствующих им катировок из листа тикеров {@link #getTickerList()}
      * и массива катировок {@link #getQuoteList()}
+     *
      * @return словарь из тикеров акций и соответствующих им катировок
      * @throws Exception выбрасывается, когда размеры листа тикеров и массива катировок не совпадают
      */

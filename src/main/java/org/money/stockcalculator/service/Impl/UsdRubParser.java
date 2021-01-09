@@ -21,6 +21,7 @@ public class UsdRubParser implements CurrencyParser {
 
     /**
      * Получение html кода страницы по ссылке
+     *
      * @return объект Document с html кодом страницы
      */
     private Document getPage() {
@@ -40,6 +41,7 @@ public class UsdRubParser implements CurrencyParser {
      * потому может быть оптимизирована
      * Реализация интерфейса требует всего одно значение, а не список, так что данная выборка может быть
      * оптимизирована и улучшена также с этой стороны
+     *
      * @return массив катировок покупки и продажи различных валют
      */
     private double[] getDoubleQuoteArray() {
@@ -66,7 +68,7 @@ public class UsdRubParser implements CurrencyParser {
         return doubleValues;
     }
 
-    public double getQuote(){
+    public double getQuote() {
         double[] quotes = getDoubleQuoteArray();
         return quotes[0];
     }

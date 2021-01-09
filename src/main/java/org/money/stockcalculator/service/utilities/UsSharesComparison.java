@@ -65,7 +65,7 @@ public class UsSharesComparison {
     /**
      * Функция округления числа до 4 знака
      */
-    private double roundValue(double value){
+    private double roundValue(double value) {
         BigDecimal currentDecimal = BigDecimal.valueOf(value);
         return currentDecimal.setScale(4, BigDecimal.ROUND_CEILING).doubleValue();
     }
